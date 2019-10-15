@@ -25,3 +25,19 @@ How do you add a new account?
 
 The bank is losing money in Miami and Phoenix and needs to unload low transaction customers: How do you delete users that reside in miami OR phoenix and have completed fewer than 5 transactions.
 --delete from "accounts" where ("city"='miami' or "city"='phoenix') AND "transactions_completed"<5
+
+
+Anthony moved to Santa Fe.
+--update "accounts" set "city"='santa fe' where "username"='anthony'
+
+
+Grace closed her account.
+--delete from "accounts" where "username"='grace'
+
+Travis made a withdrawl of $20,000. What's their new balance? NOTE: Research RETURNING
+--update "accounts" set "account_balance" = "account_balance" - 20000
+  where "username"='travis'
+  returning "account_balance";
+
+The Bank needs to track last names. NOTE: Research ALTER TABLE https://www.postgresql.org/docs/10/static/sql-altertable.html
+--alter table "accounts" add column "lastname" varchar(80)
